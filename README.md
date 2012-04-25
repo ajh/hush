@@ -1,29 +1,19 @@
 # Hush
 
-TODO: Write a gem description
+This gem provides a command line utility called 'hush' which can
+manage secret info. This was built to solve my problem of not
+wanting to store email addresses and other sensitive info in my
+github managed dotfiles project.
 
-## Installation
+The hushs are not meant to be cryptographically secure. They are
+stored in a yaml file (~/.hush.yml) and are protected by unix
+file permissions. This is similar to how ssh private keys are stored in
+an ~/.ssh directory.
 
-Add this line to your application's Gemfile:
+## Examples
 
-    gem 'hush'
+git config user.email ${hush my_email}
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install hush
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+This will store the value of *my_email* in your git config. If
+*my_email* is not known to hush, you will be prompted to supply it and
+it will be remembered from then on.

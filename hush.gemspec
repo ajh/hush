@@ -4,8 +4,13 @@ require File.expand_path('../lib/hush/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Andy Hartford"]
   gem.email         = ["hartforda@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = <<-DESC
+This gem provides a command line utility called 'hush' which can
+manage secret info. This was built to solve my problem of not
+wanting to store email addresses and other sensitive info in my
+github managed dotfiles project.
+DESC
+  gem.summary       = %q{A Command line utility to manage sensitive info}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
