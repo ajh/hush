@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+require "rubygems"
+require "thor"
+require "yaml"
+require "pathname"
+
+class HushCommand < Thor
+  include Thor::Actions
+
+  desc "foo", "Prints foo"
+  def foo; puts "foo"; end
+
+  desc "add NAME VALUE", "Adds a field to storage"
+  def add(name, value)
+    storage = load_storage
+    storage[name] = value
+    save_storage storage
+  end
+
+  desc "take NAME", "Prints the value of the field with named NAME. If NAME is unknown, the value can be provided at the prompt"
+  def take(name)
+    storage = load_storage
+
+    if !storage.key?(name)
+      storage[name] = ask "#{name} is undefined. Enter a value to add it to storage:"
+      save_storage storage
+    end
+
+    puts storage[name]
+  end
+
+  private
+
+    # returns hash from storage
+    def load_storage
+      path = Pathname.new("#{ENV['HOME']}/.hush.yml")
+      path.file? ? YAML.load(path) : {}
+    end
+
+    # saves hash from storage
+    def save_storage(hash)
+      path = Pathname.new("#{ENV['HOME']}/.hush.yml")
+      path.open('w') {|io| io << YAML.dump(hash) }
+    end
+end
+
+HushCommand.start

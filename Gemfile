@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in secret.gemspec
+# Specify your gem's dependencies in hush.gemspec
 gemspec

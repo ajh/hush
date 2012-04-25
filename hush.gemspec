@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/secret/version', __FILE__)
+require File.expand_path('../lib/hush/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Andy Hartford"]
@@ -11,12 +11,12 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "secret"
+  gem.name          = "hush"
   gem.require_paths = ["lib"]
-  gem.version       = Secret::VERSION
+  gem.version       = Hush::VERSION
 
   gem.add_runtime_dependency 'thor'
-  gem.post_install_message = "Shush - you've installed secret. See 'secret -h' for more info."
+  gem.post_install_message = "You've installed hush. See 'hush -h' for more info."
 
   gem.add_development_dependency 'rspec', '~> 2'
 end
